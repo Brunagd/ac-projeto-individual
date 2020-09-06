@@ -1,18 +1,24 @@
+package com.example.projetoindividual;
+
 public abstract class CalculoPontos {
+
 
     public String nome;
     public Integer nivel;
     public Double calculoPontos;
 
 
+    // construtor
     public CalculoPontos(String nome, Integer nivel, Double calculoPontos) {
         this.nome = nome;
         this.nivel = nivel;
         this.calculoPontos = calculoPontos;
     }
 
+    // metodo abstrato
     public abstract Double calculoPontos();
 
+    // getters
     public String getNome() {
         return nome;
     }
@@ -29,6 +35,7 @@ public abstract class CalculoPontos {
         this.nome = nome;
     }
 
+    // seters
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
     }
@@ -37,13 +44,14 @@ public abstract class CalculoPontos {
         this.calculoPontos = calculoPontos;
     }
 
+    //toString
     @Override
     public String toString() {
-        return "\n Calculo de Pontos por jogador: {"
+        return "\n Dados do jogador: {"
                 + "\n nome: '" + nome
                 + '\''
                 + "\n nivel do jogador: " + nivel
-                + "\n calculo dos pontos=" + calculoPontos
+                + "\n calculo dos pontos: " + calculoPontos
                 + '}';
     }
 }

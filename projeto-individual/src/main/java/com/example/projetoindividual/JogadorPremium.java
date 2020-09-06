@@ -1,6 +1,14 @@
+package com.example.projetoindividual;
+
+import com.example.projetoindividual.CalculoPontos;
+
+// classe do jogadore Premium
 public class JogadorPremium extends CalculoPontos {
 
+    // o jogador Premium ganha um acrescimo no dano por nivel de Skin
+
     private Integer nivelSkin;
+
 
     public JogadorPremium(String nome, Integer nivel, Double calculoPontos, Integer nivelSkin) {
         super(nome, nivel, calculoPontos);
@@ -9,7 +17,7 @@ public class JogadorPremium extends CalculoPontos {
 
     @Override
     public Double calculoPontos() {
-        return this.nivelSkin * 0.15;
+        return this.nivel * this.nivelSkin * 0.60;
     }
 
     @Override
