@@ -11,10 +11,21 @@ import java.util.stream.Collectors;
 @RequestMapping("/jogadores")
 public class JogadorController {
 
-   private List<CalculoPontos> listaJogador = new ArrayList<>();
+   private List<Jogador> listaJogador = new ArrayList<>();
 
 
     // lista todos os jogadores
+
+    public void adiconaFree(@RequestBody JogadorFree jogadorFree){
+        listaJogador.add(jogadorFree);
+    }
+
+    public void adiconaPremium(@RequestBody JogadorPremium jogadorPremium){
+        listaJogador.add(jogadorPremium);
+    }
+
+
+
     @GetMapping("/listar")
     public ResponseEntity listarJogadores(){
         if (listaJogador.isEmpty()){
@@ -23,10 +34,17 @@ public class JogadorController {
         return ResponseEntity.ok(listaJogador);
     }
 
+
     // cria um novo jogador
-    @PostMapping
-    public ResponseEntity criarJogador(@RequestBody CalculoPontos novoJogador){
-        listaJogador.add(novoJogador);
+    @PostMapping("/free")
+    public ResponseEntity criarJogadorFree(@RequestBody JogadorFree jogadorFree){
+           listaJogador.add(jogadorFree);
+        return ResponseEntity.status(201).build();
+    }
+
+    @PostMapping("/premium")
+    public ResponseEntity criarJogadorPremium(@RequestBody JogadorPremium jogadorPremium){
+        listaJogador.add(jogadorPremium);
         return ResponseEntity.status(201).build();
     }
 
@@ -48,7 +66,7 @@ public class JogadorController {
     @GetMapping("/melhoresJogadores")
     public ResponseEntity getGetMelhoresJogadores() {
 
-        List<CalculoPontos> melhoresJogadores = listaJogador.stream()
+        List<Jogador> melhoresJogadores = listaJogador.stream()
                 .filter(lisJogadores -> lisJogadores.getNivel() >= 80)
                 .collect(Collectors.toList());
 
